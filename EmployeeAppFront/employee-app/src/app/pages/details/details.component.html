@@ -1,0 +1,47 @@
+<div *ngIf="employee">
+  <form class="form form-inline bg-light shadow bg-body-tertiary rounded">
+    <h1 class="mb-3">Details</h1>
+    <div class="mb-3">
+      <label class="form-label">First name</label>
+      <input type="text" class="form-control" disabled value="{{ employee.firstName }}" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Last name</label>
+      <input type="text" class="form-control" disabled value="{{ employee.lastName }}" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Department</label>
+      <input type="text" class="form-control" disabled value="{{ employee.department }}" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Shift</label>
+      <input type="text" class="form-control" disabled value="{{ employee.shift }}" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Situation</label>
+      <input type="text" class="form-control" disabled
+        value="{{ employee.isActive == true ? 'Active' : 'Inactive' }}" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Creation date</label>
+      <input type="text" class="form-control" disabled value="{{ employee.createDate }}" />
+    </div>
+    <div class="mb-5">
+      <label class="form-label">Update date</label>
+      <input type="text" class="form-control" disabled value="{{ employee.updateDate }}" />
+    </div>
+    <div class="button-box">
+      <button *ngIf="employee.isActive == true; else inactive" type="button" class="btn btn-outline-danger shadow p-3 rounded" (click)="InactiveEmployee()">
+        Inactivate the employee
+      </button>
+      <ng-template #inactive>
+        <button type="button" class="btn btn-outline-success shadow p-3 rounded" (click)="ActiveEmployee()">
+          Activate the employee
+        </button>
+      </ng-template>
+      <button type="button" class="btn btn-outline-secondary shadow p-3 rounded" routerLink="/">
+        Back
+      </button>
+    </div>
+  </form>
+</div>

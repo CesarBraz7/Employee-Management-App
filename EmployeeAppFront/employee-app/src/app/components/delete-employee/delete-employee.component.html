@@ -1,0 +1,27 @@
+<div class="dialog bg-light shadow bg-body-tertiary rounded" *ngIf="employee">
+  <div>
+    <h1 class="mb-3">Delete employee</h1>
+  </div>
+    <div>
+      <div class="mb-3">
+        <label class="form-label">First name</label>
+        <input type="text" class="form-control" disabled value="{{ employee.firstName }}" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Last name</label>
+        <input type="text" class="form-control" disabled value="{{ employee.lastName }}" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Department</label>
+        <input type="text" class="form-control" disabled value="{{ employee.department }}" />
+      </div>
+      <div class="mb-5">
+        <label class="form-label">Shift</label>
+        <input type="text" class="form-control" disabled value="{{ employee.shift }}" />
+      </div>
+    </div>
+  <div class="button-box">
+    <button class="btn btn-outline-danger shadow p-3 rounded" (click)="onClickDelete()">Delete</button>
+    <button class="btn btn-outline-secondary shadow p-3 rounded" (click)="onClickBack()">Back</button>
+  </div>
+</div>

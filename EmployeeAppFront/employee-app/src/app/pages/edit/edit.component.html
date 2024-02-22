@@ -1,0 +1,7 @@
+<div *ngIf="employee">
+    <app-form-employee 
+    [btnAction]="btnAction" 
+    [btnTitle]="btnTitle" 
+    (onSubmit)="updateEmployee($event)" 
+    [dataEmployee]="employee"></app-form-employee>
+</div>

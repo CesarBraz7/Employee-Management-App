@@ -1,0 +1,60 @@
+<div class="bg-light">
+    <form class="form form-inline">
+        <button type="button" class="register-btn btn btn-outline-primary shadow p-3 rounded"
+            routerLink="/register">Register new employee</button>
+        <input class="form-control shadow p-3 bg-body-tertiary rounded" placeholder="Search" (input)="search($event)">
+    </form>
+</div>
+
+<table mat-table [dataSource]="employees" class="table table-striped">
+
+    <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let employee">
+
+            <div *ngIf="employee.isActive == true; else inactive">
+                <img src="assets/img/online.png" alt="online" style="width: 1.5rem;">
+            </div>
+            <ng-template #inactive>
+                <img src="assets/img/offline.png" alt="offline" style="width: 1.5rem;">
+            </ng-template>
+
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> First name </th>
+        <td mat-cell *matCellDef="let employee"> {{employee.firstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef> Last name </th>
+        <td mat-cell *matCellDef="let employee"> {{employee.lastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef> Department </th>
+        <td mat-cell *matCellDef="let employee"> {{employee.department}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="shift">
+        <th mat-header-cell *matHeaderCellDef> Shift </th>
+        <td mat-cell *matCellDef="let employee"> {{employee.shift}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let employee">
+            <div class="btn-table">
+                <button type="button" class="btn btn-outline-primary btn-sm"
+                    routerLink="/edit/{{employee.id}}">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn-sm"
+                    routerLink="/details/{{employee.id}}">Details</button>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="openDialog(employee.id)">Delete</button>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>

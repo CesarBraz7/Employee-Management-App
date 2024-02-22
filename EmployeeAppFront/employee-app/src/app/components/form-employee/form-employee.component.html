@@ -1,0 +1,64 @@
+<div>
+  <div>
+    <form
+      class="form form-inline bg-light shadow bg-body-tertiary rounded"
+      [formGroup]="employeeForm"
+      (ngSubmit)="submit()"
+      #formDit="ngForm"
+    >
+      <input type="hidden" formControlName="id" />
+      <h1 class="mb-5">{{ btnTitle }}</h1>
+      <div class="mb-3">
+        <label class="form-label">First name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="firstName"
+          placeholder="First name"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Last name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="lastName"
+          placeholder="Last name"
+          required
+        />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Department</label>
+        <select class="form-select" formControlName="department" required>
+          <option value="HR">HR</option>
+          <option value="Financial">Financial</option>
+          <option value="Purchasing">Purchasing</option>
+          <option value="Janitorial">Janitorial</option>
+        </select>
+      </div>
+      <div class="mb-5">
+        <label class="form-label">Shift</label>
+        <select class="form-select" formControlName="shift" required>
+          <option value="Morning">Morning</option>
+          <option value="Afternoon">Afternoon</option>
+          <option value="Night">Night</option>
+        </select>
+      </div>
+      <div class="button-box">
+        <button
+          class="btn btn-outline-primary shadow p-3 rounded"
+          [disabled]="!employeeForm.valid"
+        >
+          {{ btnAction }}
+        </button>
+        <button
+          class="btn btn-outline-secondary shadow p-3 rounded"
+          routerLink="/"
+        >
+          Back
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
